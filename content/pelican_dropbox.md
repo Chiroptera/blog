@@ -1,11 +1,25 @@
-Title: Hosting Pelican website in Dropbox
+Title: Hosting a website in Dropbox
 Date: 2015-03-31 10:19
+Category: 
+Tags: dropbox
 
 This entry will serve as a short documentation on how to set up a Pelican website hosted in Dropbox. I'm running Ubuntu, so the commands used work in that environment. Analogue steps can be taken for PC and Mac.
 
+# Why host in Dropbox?
+You might imediately think why would you like to host a website in Dropbox. There are several reasons:
+- You have a prototype website you want to demo. Dropbox offers a quick and easy way to have it online and running.
+- You have a simple website you'd like to share with other people.
+- bla ble bli
+
+# Disadvantages
+There are some disadvantages to having a website hosted on Dropbox though:
+- It has some quirks with custom domains (more on that later)
+- It can only serve static pages, which means you can forget any server side goodies (no wordpress hosting for instance)
+- 
+
 # Setting up Dropbox
 
-I will forego the details of creating a [Dropbox](https://www.dropbox.com/) account. Just make sure that you have a Public directory as that is what will serve your website.
+I will forego the details of creating a [Dropbox](https://www.dropbox.com/) account. Just make sure that you have a Public directory. This directory will have your website inside. Dropbox serves this directory by default.
 
 # Setting up Pelican
 
@@ -51,8 +65,7 @@ I said I would tell to set up with the second option (have only the static sites
 > Do you want to specify a URL prefix? e.g., http://example.com   (Y/n) Y
 > What is your URL prefix? (see above example; no trailing slash) http://www.diogoaos.eu
 > Do you want to enable article pagination? (Y/n) 
-> How many articles per page do you want? [10] 
-> Do you want to generate a Fabfile/Makefile to automate generation and publishing? (Y/n) 
+> How many articles per page do you want? [10] > Do you want to generate a Fabfile/Makefile to automate generation and publishing? (Y/n) 
 > Do you want an auto-reload & simpleHTTP script to assist with theme and site development? (Y/n) 
 > Do you want to upload your website using FTP? (y/N) 
 > Do you want to upload your website using SSH? (y/N) 
@@ -62,15 +75,18 @@ I said I would tell to set up with the second option (have only the static sites
 > Do you want to upload your website using GitHub Pages? (y/N)
 ```
 
-From inside the Pelican folder, run `make publish` to publish your whole website. There are other options to the `make` script, but I won't go into detail here.
+From inside the Pelican folder, run `make publish` to publish your whole website. There are other `make` options that you can explore.
 
-You can now access you Dropbox hosted website. To get the link go into your website directory using the website navigator, enter the *output* folder, click the *index.html* file and click the *Copy public link* button on the top.
+You can now access your Dropbox hosted website. To get the link go into your website directory using the website navigator, enter the *output* folder, click the *index.html* file and click the *Copy public link* button on the top.
 
 <img src="images/dropbox_copy_link.png" alt="Dropbox copy public link button" style="width: 600px;" align="middle" />
 
 That is the direct link for you website. It is also the link you'd use to redirect your custom domain. Test drive the website by pasting the link into the browser. If the website looks like the image below, don't be alarmed - it's a absolute path problem.
 
 <img src="images/pelican_abs_link.jpg" alt="Broken style" style="width: 400px;" align="middle" />
+
+.. figure:: {filename}/images/pelican_abs_link.jpg
+    :align: right
 
 By default, Pelican uses absolute paths on all it's links. That means the HTML files are trying go the resources that are actually inside the computer (which Dropbox can't access) instead of the ones that are inside the website directory. The configuration file *pelicanconf.py* in the Pelican folder has to be modified to use relative paths. Open this file and search for *RELATIVE_URLS*. By default, it's already there commented. If it isn't just add the following to the end.
 
@@ -81,9 +97,6 @@ RELATIVE_URLS = True
 This file is responsible for a [myriad](http://docs.getpelican.com/en/latest/settings.html) of configuration settings in Pelican. It's written in Pythn syntax so you can add comments to the configurations by writing after a `#`.
 
 
+There you have it, it should now look like something that doesn't hurt your eyes.
 
-`make devserver`
-`make stopserver`
-
-
-
+While writing for the website or fiddling with the configurations, I like to have a local webserver where I can instantly see the effects of my actions. Pelican already comes with this built-in. From the Pelican website folder just run `make devserver` and the website should be available at `http://localhost:8000` from a browser. This server will actively respond to changes in the configurations and auto generate all the content, in real time. When satisfied, I just have copy the contents of the *output* folder. `make stopserver` will stop the webserver.
