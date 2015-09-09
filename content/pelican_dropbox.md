@@ -1,12 +1,14 @@
 Title: Hosting a website in Dropbox
+Authors: Diogo Silva
 Date: 2015-03-31 10:19
 Category: 
 Tags: dropbox
+Status: draft
 
 This entry will serve as a short documentation on how to set up a Pelican website hosted in Dropbox. I'm running Ubuntu, so the commands used work in that environment. Analogue steps can be taken for PC and Mac.
 
 # Why host in Dropbox?
-You might imediately think why would you like to host a website in Dropbox. There are several reasons:
+You might immediately think why would you like to host a website in Dropbox. There are several reasons:
 - You have a prototype website you want to demo. Dropbox offers a quick and easy way to have it online and running.
 - You have a simple website you'd like to share with other people.
 - bla ble bli

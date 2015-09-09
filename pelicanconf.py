@@ -10,8 +10,8 @@ PATH = 'content'
 
 TIMEZONE = 'Europe/Paris'
 
-DEFAULT_LANG = u'en'
-
+DEFAULT_LANG = 'en'
+LOCALE = 'en_US.UTF-8' # if ommited default is system locale
 AUTHOR_BIO=""
 
 # Blogroll
@@ -28,13 +28,19 @@ SOCIAL = (('You can add links in your config file', '#'),
 DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
-RELATIVE_URLS = False
+RELATIVE_URLS = True
 
 #output is the gh-pages repo
 DELETE_OUTPUT_DIRECTORY = False 
 
-DEFAULT_DATE_FORMAT = '%a %d %B %Y'
+DEFAULT_DATE_FORMAT = '%d %B %Y'
+#DATE_FORMAT = {'en': '%d %B %Y'}
 
 STATIC_PATHS = ['images']
 
 THEME = "pelican-themes/pelican-svbtle"
+
+MARKUP = ('md', 'ipynb')
+
+PLUGIN_PATHS = ['./plugins']
+PLUGINS = ['ipynb']

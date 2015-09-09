@@ -1,0 +1,7 @@
+Title: Simple Python stopwatch timer to wrap functions
+Date: 2015-09-09
+Authors: Diogo Silva
+Category: 
+Tags: python
+Status: published
+Summary: A simple implementation of a stopwatch timer for Python that wraps other functions automatically.
